@@ -1,0 +1,70 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    cisco_iol:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-lab-multi-BGW1:
+          ansible_host: 172.30.20.11
+        clab-lab-multi-ISP1:
+          ansible_host: 172.30.20.16
+        clab-lab-multi-PE1:
+          ansible_host: 172.30.20.2
+        clab-lab-multi-PE3:
+          ansible_host: 172.30.20.4
+    huawei_vrp:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-lab-multi-PE2:
+          ansible_host: 172.30.20.3
+    linux:
+      hosts:
+        clab-lab-multi-SRV1:
+          ansible_host: 172.30.20.15
+    mikrotik_ros:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-lab-multi-BNG2:
+          ansible_host: 172.30.20.5
+        clab-lab-multi-BNG3:
+          ansible_host: 172.30.20.10
+        clab-lab-multi-CGNAT1:
+          ansible_host: 172.30.20.12
+        clab-lab-multi-CGNAT2:
+          ansible_host: 172.30.20.6
+        clab-lab-multi-CLI1:
+          ansible_host: 172.30.20.7
+        clab-lab-multi-P1:
+          ansible_host: 172.30.20.13
+        clab-lab-multi-P2:
+          ansible_host: 172.30.20.14
+        clab-lab-multi-PE4:
+          ansible_host: 172.30.20.8
+    nokia_srlinux:
+      vars:
+        ansible_network_os: nokia.srlinux.srlinux
+        # default connection type for nodes of this kind
+        # feel free to override this in your inventory
+        ansible_connection: ansible.netcommon.httpapi
+        ansible_user: admin
+        ansible_password: NokiaSrl1!
+      hosts:
+        clab-lab-multi-PE5:
+          ansible_host: 172.30.20.9
+    ovs-bridge:
+      hosts:
+        clab-lab-multi-br0:
+          ansible_host: 

@@ -1,0 +1,79 @@
+name: lab-multi
+mgmt:
+  ipv4-subnet: 172.30.20.0/24
+topology:
+  nodes:
+    PE1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+    P1:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.15
+    P2:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.15
+    PE2:
+      kind: huawei_vrp
+      image: vrnetlab/huawei_vrp:ne40e-8.180
+      env:
+        QEMU_MEMORY: "3072"
+        QEMU_SMP: "2"
+      startup-config: clab-lab-multi/PE2/config/startup-config.cfg
+    PE3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+    CLI1:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.15
+    PE4:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.15
+    CGNAT1:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.15
+    BNG2:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:7.22.3
+    PE5:
+      kind: nokia_srlinux
+      type: ixr-d1
+      image: ghcr.io/nokia/srlinux:latest
+    CGNAT2:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:6.49.19
+    BNG3:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:7.22.3
+    SRV1:
+      kind: linux
+      image: ghcr.io/srl-labs/network-multitool:latest
+    br0:
+      kind: ovs-bridge
+    BGW1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+    ISP1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.16.01a
+
+  links:
+    - endpoints: [ "PE1:eth2", "P1:eth1" ]
+    - endpoints: [ "P1:eth2", "P2:eth1" ]
+    - endpoints: [ "P2:eth2", "PE2:eth1" ]
+    - endpoints: [ "PE4:eth1", "P1:eth3" ]
+    - endpoints: [ "PE4:eth2", "P2:eth3" ]
+    - endpoints: [ "PE3:eth1", "P2:eth4" ]
+    - endpoints: [ "PE1:eth3", "PE3:eth3" ]
+    - endpoints: [ "PE1:eth4", "P2:eth5" ]
+    - endpoints: [ "CGNAT1:eth1", "PE2:eth2" ]
+    - endpoints: [ "CGNAT1:eth2", "PE2:eth3" ]
+    - endpoints: [ "BNG2:eth1", "PE3:eth2" ]
+    - endpoints: [ "BNG2:eth2", "CLI1:eth1" ]
+    - endpoints: [ "PE5:e1-1", "P1:eth4" ]
+    - endpoints: [ "CGNAT2:eth1", "PE1:eth5" ]
+    - endpoints: [ "CGNAT2:eth2", "PE1:eth6" ]
+    - endpoints: [ "BNG3:ether2", "P2:eth6" ]
+    - endpoints: [ "br0:eth1", "CLI1:eth2" ]
+    - endpoints: [ "BGW1:eth1", "PE1:eth1" ]
+    - endpoints: [ "SRV1:eth1", "ISP1:eth1" ]
+    - endpoints: [ "ISP1:eth2", "BGW1:eth2" ]

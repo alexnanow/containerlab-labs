@@ -1,0 +1,81 @@
+---
+BGW1:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.30.20.11
+ISP1:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.30.20.16
+PE1:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.30.20.2
+PE3:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.30.20.4
+PE2:
+    username: admin
+    password: admin
+    platform: huawei_vrp
+    hostname: 172.30.20.3
+SRV1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.30.20.15
+BNG2:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.5
+BNG3:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.10
+CGNAT1:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.12
+CGNAT2:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.6
+CLI1:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.7
+P1:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.13
+P2:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.14
+PE4:
+    username: admin
+    password: admin
+    platform: mikrotik_ros
+    hostname: 172.30.20.8
+PE5:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.30.20.9
+br0:
+    username: 
+    password: 
+    platform: ovs-bridge
+    hostname: 
