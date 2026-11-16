@@ -76,7 +76,6 @@ Os arquivos de configuração mostram um cenário em desenvolvimento. A configur
 
 - Os arquivos de boot de PE1, PE3, BGW1 e ISP1 contêm principalmente configuração inicial/gerência, sem a configuração de serviço necessária para confirmar o percurso completo.
 - CGNAT2 e BNG3 têm configuração de serviço mínima nos arquivos persistidos.
-- Não encontrei configuração persistida de serviço no PE5; seu arquivo `topology.yml` define apenas parâmetros de chassis.
 - Os arquivos `ansible-inventory.yml`, `nornir-simple-inventory.yml` e `.state.clab.yaml` são artefatos gerados pelo Containerlab, não uma fonte única da verdade para a configuração de rede.
 
 Por isso, o objetivo é demonstrar segregação por VRF e troca VPNv4, mas uma validação ponta a ponta e a ausência real de vazamento devem ser verificadas após completar e conferir as configurações dos PEs e as políticas de RT.
